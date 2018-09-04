@@ -1,0 +1,2 @@
+let's break sandbox.
+start from nc pwn1.chal.ctf.westerns.tokyo 30001

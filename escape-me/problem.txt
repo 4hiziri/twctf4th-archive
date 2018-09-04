@@ -1,0 +1,4 @@
+host : escapeme.chal.ctf.westerns.tokyo
+port : 16359
+
+EscapeMe.tar.gz

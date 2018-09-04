@@ -1,0 +1,2 @@
+Welcome
+TWCTF{Welcome_TokyoWesterns_CTF_2018!!}

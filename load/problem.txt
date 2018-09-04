@@ -1,0 +1,2 @@
+host : pwn1.chal.ctf.westerns.tokyo
+port : 34835
