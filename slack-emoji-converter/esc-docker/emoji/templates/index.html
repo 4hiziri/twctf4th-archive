@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Slack emoji converter</title>
+    <link rel="stylesheet" href="Slack%20emoji%20converter_files/bootstrap.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  </head>
+  <body>
+    <style>
+      #draggable {
+        margin-top: 16px;
+        width: 50vw;
+        height: 50vw;
+        border: 2px dashed #3f3fff;
+        position: relative;
+      }
+
+      #placeholder {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        color: #7f7f7f;
+      }
+
+      #preview {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+      
+      .hidden {
+        display: none;
+      }
+
+      #main {
+        margin: 10px auto 0 auto;
+        width: 50vw;
+      }
+
+      #upload-btn {
+        margin-top: 16px;;
+        width: 100%;
+      }
+    </style>
+
+    <div id="main">
+      <h1>Slack emoji converter</h1>
+      <form method="post" action="/conv" enctype="multipart/form-data">
+        <div id="draggable">
+          <div id="placeholder">
+            Drag and drop a image to convert
+          </div>
+          <img id="preview" class="hidden">
+          <input id="image" name="image" class="hidden" type="file">
+        </div>
+        <button class="btn btn-primary" id="upload-btn" disabled="disabled">Convert</button>
+      </form>
+    </div>
+
+    <!-- <a href="/source">source</a> -->
+
+    <script>
+      let file = null;
+      const draggable = document.getElementById('draggable');
+      const placeholder = document.getElementById('placeholder');
+      const preview = document.getElementById('preview');
+      const uploadBtn = document.getElementById('upload-btn');
+      const updateView = () => {
+        if (!file) {
+          preview.classList.add('hidden');
+          placeholder.classList.remove('hidden');
+          uploadBtn.disabled = true;
+        } else {
+          preview.classList.remove('hidden');
+          placeholder.classList.add('hidden');
+          uploadBtn.disabled = false;
+          preview.src = URL.createObjectURL(file);
+        }
+      };
+
+      draggable.addEventListener('dragenter', (ev) => {
+        ev.preventDefault();
+      });
+
+      draggable.addEventListener('dragover', (ev) => {
+        ev.preventDefault();
+      });
+
+      draggable.addEventListener('drop', (ev) => {
+        ev.preventDefault();
+        if (ev.dataTransfer.files.length === 1) {
+          file = ev.dataTransfer.files[0];
+          image.files = ev.dataTransfer.files;
+        } else {
+          file = null;
+        }
+        updateView();
+      });
+    
+    </script>
+  
+</body></html>
