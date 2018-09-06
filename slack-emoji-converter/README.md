@@ -2,7 +2,6 @@
 以下のコマンドを実行する。
 ```sh
 cat esc-docker.tar | docker load
-./run.sh
 ```
 
 ビルドするなら以下
@@ -11,6 +10,7 @@ cd esc-docker
 docker build -t esc-docker .
 ```
 
+起動は`./run.sh`にまとめたので実行するだけ。
 
 http://localhost:8080/ でアクセスできる
 8080が外からも多分見えるので注意、安全な環境でやろう。
