@@ -5,6 +5,13 @@ cat esc-docker.tar | docker load
 ./run.sh
 ```
 
+ビルドするなら以下
+```sh
+cd esc-docker
+docker build -t esc-docker .
+```
+
+
 http://localhost:8080/ でアクセスできる
 8080が外からも多分見えるので注意、安全な環境でやろう。
 それか仮想マシン使おう。
